@@ -4,7 +4,7 @@ source /bd_build/buildconfig
 set -x
 
 ## Often used tools.
-$minimal_apt_get_install curl less vim-tiny psmisc dirmngr gnupg-agent
+$minimal_apt_get_install curl less vim-tiny psmisc dirmngr gnupg-agent lzop pv netcat-openbsd
 ln -s /usr/bin/vim.tiny /usr/bin/vim
 
 ## This tool runs a command as another user and sets $HOME.
@@ -28,5 +28,17 @@ echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 ## Ansistrano folder
 mkdir -p /home/ansistrano/.ssh
 ( cd /home/ansistrano/.ssh/ && ssh-keygen -t rsa -b 4096 -C '' -f /home/ansistrano/.ssh/id_rsa )
+
+## Ansistrano configuration
+cat >> /home/ansistrano/.ansible.cfg <<EOF
+[defaults]
+transport = ssh
+force_color = True
+host_key_checking = False
+
+[ssh_connection]
+ssh_args = -o ForwardAgent=yes
+EOF
+
 chown ansistrano:ansistrano -Rf /home/ansistrano/
 

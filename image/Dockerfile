@@ -13,5 +13,5 @@ ENV DEBIAN_FRONTEND="teletype" \
     LC_ALL="en_US.UTF-8"
 
 #CMD ["/sbin/my_init"]
-ENTRYPOINT ["/sbin/init_start"]
+#ENTRYPOINT ["/sbin/init_start"]
 
