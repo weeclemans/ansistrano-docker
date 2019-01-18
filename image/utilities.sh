@@ -15,7 +15,12 @@ cp /bd_build/bin/install_clean /sbin/install_clean
 
 cp /bd_build/start.sh /sbin/init_start
 
-# Install ansible & ansistrano
+## Install mitogen
+curl -fsSL -o /tmp/mitogen-0.2.3.tar.gz https://files.pythonhosted.org/packages/source/m/mitogen/mitogen-0.2.3.tar.gz
+tar -xzf /tmp/mitogen-0.2.3.tar.gz -C /opt/mitogen --strip-components=1
+rm -f /tmp/mitogen-0.2.3.tar.gz
+
+## Install ansible & ansistrano
 apt-add-repository --yes --update ppa:ansible/ansible
 $minimal_apt_get_install ansible openssh-client rsync sudo
 ansible-galaxy install --force ansistrano.deploy ansistrano.rollback --roles-path=/usr/share/ansible/roles
