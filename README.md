@@ -5,5 +5,5 @@ included:
  * Ubuntu 16.04
  * Ansible 2.7.x
  * Mitogen 0.2.3
- * ansistrano.deploy 2.11.0
- * ansistrano.rollback 2.0.1
+ * ansistrano.deploy 2.11.x
+ * ansistrano.rollback 2.0.x
