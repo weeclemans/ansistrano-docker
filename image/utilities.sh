@@ -35,10 +35,11 @@ cat >> /home/ansistrano/.ansible.cfg <<EOF
 transport = ssh
 force_color = True
 host_key_checking = False
+strategy_plugins = /opt/mitogen-0.2.3/ansible_mitogen/plugins/strategy
+strategy = mitogen_linear
 
 [ssh_connection]
-ssh_args = -o ForwardAgent=yes
+ssh_args = -C -o ControlMaster=auto -o ControlPersist=60s -o ForwardAgent=yes -o StrictHostKeyChecking=no
 EOF
 
 chown ansistrano:ansistrano -Rf /home/ansistrano/
-
