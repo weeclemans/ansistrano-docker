@@ -1,5 +1,5 @@
 # ansistrano-docker
-ansistrano docker image ( based on phusion/baseimage https://github.com/phusion/baseimage-docker )
+ansistrano docker image for CI ( based on phusion/baseimage https://github.com/phusion/baseimage-docker )
 
 included:
  * Ubuntu 16.04
