@@ -16,9 +16,9 @@ cp /bd_build/bin/install_clean /sbin/install_clean
 cp /bd_build/start.sh /sbin/init_start
 
 ## Install mitogen
-curl -fsSL -o /tmp/mitogen-0.2.5.tar.gz https://files.pythonhosted.org/packages/source/m/mitogen/mitogen-0.2.5.tar.gz
-tar -xzf /tmp/mitogen-0.2.5.tar.gz -C /opt/mitogen --strip-components=1
-rm -f /tmp/mitogen-0.2.5.tar.gz
+curl -fsSL -o /tmp/mitogen-0.2.6.tar.gz https://files.pythonhosted.org/packages/source/m/mitogen/mitogen-0.2.6.tar.gz
+tar -xvzf /tmp/mitogen-0.2.5.tar.gz -C /opt/mitogen --strip-components=1
+rm -vf /tmp/mitogen-0.2.6.tar.gz
 
 ## Install ansible & ansistrano
 apt-add-repository --yes --update ppa:ansible/ansible
