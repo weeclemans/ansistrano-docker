@@ -16,9 +16,9 @@ cp /bd_build/bin/install_clean /sbin/install_clean
 cp /bd_build/start.sh /sbin/init_start
 
 ## Install mitogen
-curl -fsSL -o /tmp/mitogen-0.2.3.tar.gz https://files.pythonhosted.org/packages/source/m/mitogen/mitogen-0.2.3.tar.gz
-tar -xzf /tmp/mitogen-0.2.3.tar.gz -C /opt/mitogen --strip-components=1
-rm -f /tmp/mitogen-0.2.3.tar.gz
+curl -fsSL -o /tmp/mitogen-0.2.5.tar.gz https://files.pythonhosted.org/packages/source/m/mitogen/mitogen-0.2.5.tar.gz
+tar -xzf /tmp/mitogen-0.2.5.tar.gz -C /opt/mitogen --strip-components=1
+rm -f /tmp/mitogen-0.2.5.tar.gz
 
 ## Install ansible & ansistrano
 apt-add-repository --yes --update ppa:ansible/ansible
@@ -40,11 +40,11 @@ cat >> /home/ansistrano/.ansible.cfg <<EOF
 transport = ssh
 force_color = True
 host_key_checking = False
-strategy_plugins = /opt/mitogen-0.2.3/ansible_mitogen/plugins/strategy
+strategy_plugins = /opt/mitogen/ansible_mitogen/plugins/strategy
 strategy = mitogen_linear
 
 [ssh_connection]
-ssh_args = -C -o ControlMaster=auto -o ControlPersist=60s -o ForwardAgent=yes -o StrictHostKeyChecking=no
+ssh_args = -C -o ControlMaster=auto -o ControlPersist=60s -o ForwardAgent=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
 EOF
 
 chown ansistrano:ansistrano -Rf /home/ansistrano/
