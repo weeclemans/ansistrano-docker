@@ -38,6 +38,7 @@ mkdir -p /home/ansistrano/.ssh
 cat >> /home/ansistrano/.ansible.cfg <<EOF
 [defaults]
 transport = ssh
+cow_selection = random
 force_color = True
 host_key_checking = False
 strategy_plugins = /opt/mitogen/ansible_mitogen/plugins/strategy
